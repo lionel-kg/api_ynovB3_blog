@@ -10,9 +10,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="articles")
@@ -28,9 +31,11 @@ public class Article {
 	/*@OneToOne(fetch = FetchType.LAZY,
             cascade =  CascadeType.ALL,
             mappedBy = "author")
-	private Author author;*/
+	 private Author author;*/
 	
-	 @OneToMany(targetEntity=Commentary.class, mappedBy="commentary",cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	 @JsonIgnore
+	 @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER , orphanRemoval = true)
+	 @JoinColumn(name="article_id")
 	 private List<Commentary> commentary;   
 	 
 	 public List<Commentary> getCommentary() 
