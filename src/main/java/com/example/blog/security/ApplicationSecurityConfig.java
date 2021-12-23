@@ -1,4 +1,4 @@
-package com.projet.blog.security;
+/*package com.example.blog.security;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -100,4 +100,4 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter{
 //public void setUserdetailsService(CustomUserDetailsService userdetailsService) {
 //	this.userdetailsService = userdetailsService;
 //}
-}
+}*/

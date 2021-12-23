@@ -1,4 +1,4 @@
-package com.projet.blog.controller;
+/*package com.example.blog.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,4 +19,4 @@ public class  TemplateController {
 	}
 
 
-}
+}*/
