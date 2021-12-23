@@ -27,4 +27,9 @@ public class CommentaryService {
 	{
 		return commentaryRepository.findAll();
 	}
+	
+	public void deleteCommentary(Integer id)
+	{
+		commentaryRepository.deleteById(id);
+	}
 }

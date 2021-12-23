@@ -1,11 +1,16 @@
 package com.example.blog.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.blog.model.Category;
 import com.example.blog.repository.CategoryRepository;
+import com.example.blog.transformer.CategoryFull;
+import com.example.blog.transformer.CategoryTransformer;
+
+
 
 @Service
 public class CategoryService {
@@ -23,8 +28,14 @@ public class CategoryService {
 		return categoryRepository.findById(id);
 	}
 	
-	public Iterable<Category> getCategories()
+	public List<CategoryFull> getCategories() {
+		Iterable<Category> categories = categoryRepository.findAll();
+		CategoryTransformer transformer = new CategoryTransformer();
+		return transformer.transform(categories);
+	}
+
+	public void deleteCategory(Integer id)
 	{
-		return categoryRepository.findAll();
+		categoryRepository.deleteById(id);
 	}
 }

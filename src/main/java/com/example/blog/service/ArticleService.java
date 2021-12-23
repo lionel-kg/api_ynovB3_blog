@@ -29,4 +29,8 @@ public class ArticleService {
 	{
 		return articleRepository.findAll();
 	}
+	public void deleteArticle(Integer id)
+	{
+		articleRepository.deleteById(id);
+	}
 }
