@@ -1,6 +1,7 @@
 package com.example.blog.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -9,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -26,26 +28,42 @@ public class Article {
             mappedBy = "author")
 	private Author author;*/
 	
+	 @OneToMany(targetEntity=Commentary.class, mappedBy="commentary",cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+	 private List<Commentary> commentary;   
+	 
+	 public List<Commentary> getCommentary() 
+	 {
+	       return commentary;
+	 }
+	
 	private String content;
 	
 	private Date date_pub;
 	
-	public int getArticle_id() {
+	public int getArticle_id() 
+	{
 		return article_id;
 	}
-	public void setArticle_id(int article_id) {
+	public void setArticle_id(int article_id) 
+	{
 		this.article_id = article_id;
 	}
 	public String getContent() {
 		return content;
 	}
-	public void setContent(String content) {
+	
+	public void setContent(String content) 
+	{
 		this.content = content;
 	}
-	public Date getDate_pub() {
+	
+	public Date getDate_pub() 
+	{
 		return date_pub;
 	}
-	public void setDate_pub(Date date_pub) {
+	
+	public void setDate_pub(Date date_pub) 
+	{
 		this.date_pub = date_pub;
 	}
 	
