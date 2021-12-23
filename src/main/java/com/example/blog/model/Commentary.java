@@ -29,22 +29,33 @@ public class Commentary {
 	private Date date_pub;
 	private String content;
 	
-	public int getComment_id() {
+	public int getComment_id() 
+	{
 		return comment_id;
 	}
-	public void setComment_id(int comment_id) {
+	
+	public void setComment_id(int comment_id) 
+	{
 		this.comment_id = comment_id;
 	}
-	public Date getDate_pub() {
+	
+	public Date getDate_pub() 
+	{
 		return date_pub;
 	}
-	public void setDate_pub(Date date_pub) {
+	
+	public void setDate_pub(Date date_pub) 
+	{
 		this.date_pub = date_pub;
 	}
-	public String getContent() {
+	
+	public String getContent() 
+	{
 		return content;
 	}
-	public void setContent(String content) {
+	
+	public void setContent(String content) 
+	{
 		this.content = content;
 	}
 	

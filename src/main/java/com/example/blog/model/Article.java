@@ -22,6 +22,8 @@ public class Article {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "article_id")
 	private int article_id;
+	private String content;
+	private Date date_pub;
 	
 	/*@OneToOne(fetch = FetchType.LAZY,
             cascade =  CascadeType.ALL,
@@ -36,19 +38,18 @@ public class Article {
 	       return commentary;
 	 }
 	
-	private String content;
-	
-	private Date date_pub;
-	
 	public int getArticle_id() 
 	{
 		return article_id;
 	}
+	
 	public void setArticle_id(int article_id) 
 	{
 		this.article_id = article_id;
 	}
-	public String getContent() {
+	
+	public String getContent() 
+	{
 		return content;
 	}
 	
@@ -66,5 +67,4 @@ public class Article {
 	{
 		this.date_pub = date_pub;
 	}
-	
 }

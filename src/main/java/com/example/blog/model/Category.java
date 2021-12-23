@@ -26,6 +26,9 @@ public class Category {
 	@Column(name= "categoryId")
 	private Integer categoryId;
 	
+	private String name;
+	
+	
 	/*
 	@JsonIgnore
 	@ManyToMany(fetch = FetchType.LAZY, cascade = {
@@ -46,18 +49,26 @@ public class Category {
 		this.articles = articles;
 	}
 	*/
-	public Integer getCategoryId() {
+	public Integer getCategoryId() 
+	{
 		return categoryId;
 	}
-	public void setCategoryId(Integer categoryId) {
+	
+	public void setCategoryId(Integer categoryId) 
+	{
 		this.categoryId = categoryId;
 	}
-	public String getName() {
+	
+	public String getName() 
+	{
 		return name;
 	}
-	public void setName(String name) {
+	
+	public void setName(String name) 
+	{
 		this.name = name;
 	}
-	private String name;
+	
+
 	
 }
