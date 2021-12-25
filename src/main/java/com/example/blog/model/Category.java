@@ -28,19 +28,8 @@ public class Category {
 	
 	private String name;
 	
-	
-	/*
-	@JsonIgnore
-	@ManyToMany(fetch = FetchType.LAZY, cascade = {
-			CascadeType.PERSIST,
-			CascadeType.MERGE
-	})
-	
-	@JoinTable(
-			name = "category_product",
-			joinColumns = @JoinColumn(name = "category_Id"),
-			inverseJoinColumns = @JoinColumn(name="product_id"))
-		private List<Article> articles = new ArrayList<>();
+	@ManyToMany(mappedBy = "categories")
+	private List<Article> articles = new ArrayList<>();
 	
 	public List<Article> getArticles() {
 		return articles;
@@ -48,7 +37,7 @@ public class Category {
 	public void setArticles(List<Article> articles) {
 		this.articles = articles;
 	}
-	*/
+	
 	public Integer getCategoryId() 
 	{
 		return categoryId;

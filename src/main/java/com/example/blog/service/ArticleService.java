@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.example.blog.model.Article;
 import com.example.blog.repository.ArticleRepository;
+import com.example.blog.transformer.ArticleFull;
+import com.example.blog.transformer.ArticleTransformer;
 
 @Service
 public class ArticleService {
@@ -20,6 +22,11 @@ public class ArticleService {
 		return articleRepository.save(article);
 	}
 	
+	public List<ArticleFull> getCommentary() {
+		Iterable<Article> articles = articleRepository.findAll();
+		ArticleTransformer transformer = new ArticleTransformer();
+		return transformer.transform(articles);
+	}
 	public Optional<Article> getArticle(Integer id)
 	{
 		return articleRepository.findById(id);

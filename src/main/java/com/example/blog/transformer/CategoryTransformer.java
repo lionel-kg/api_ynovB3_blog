@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
+
+import com.example.blog.model.Article;
 import com.example.blog.model.Category;
 
 
@@ -14,15 +16,16 @@ public class CategoryTransformer {
 		categoryFull.setCategoryId(category.getCategoryId());
 		categoryFull.setName(category.getName());
 		
-		/*for(Article article : category.getProducts()) {
-			ProductLight productLight = new ProductLight();
-			productLight.setId(product.getId());
-			productLight.setName(product.getName());
-			productLight.setDescription(product.getDescription());
-			productLight.setCost(product.getCost());
+		for(Article article : category.getArticles()) {
+			ArticleLight articleLight = new ArticleLight();
+			articleLight.setArticle_id(article.getArticle_id());
+			articleLight.setContent(article.getContent());
+			articleLight.setDate_pub(article.getDate_pub());
+//			articleLight.setDescription(article.getDescription());
+//			articleLight.setCost(article.getCost());
 			
-			categoryFull.getProducts().add(productLight);
-		}		*/
+			categoryFull.getArticles().add(articleLight);
+		}		
 		return categoryFull;
 	}
 	

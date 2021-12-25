@@ -1,5 +1,6 @@
 package com.example.blog.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,8 +12,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -33,10 +35,22 @@ public class Article {
             mappedBy = "author")
 	 private Author author;*/
 	
-	 @JsonIgnore
+
+	@JsonIgnore
 	 @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER , orphanRemoval = true)
 	 @JoinColumn(name="article_id")
 	 private List<Commentary> commentary;   
+	
+	
+	@ManyToMany(fetch = FetchType.LAZY, cascade = {
+			CascadeType.PERSIST,
+			CascadeType.MERGE
+	})
+	@JoinTable(
+			name = "category_article",
+			joinColumns = @JoinColumn(name = "article_id"),
+			inverseJoinColumns = @JoinColumn(name="category_id"))
+	private List<Category> categories = new ArrayList<>();
 	 
 	 public List<Commentary> getCommentary() 
 	 {

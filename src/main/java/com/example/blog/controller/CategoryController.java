@@ -42,11 +42,8 @@ public class CategoryController {
 	}
 
 	@PostMapping("/category/add")
-	public ResponseEntity<Category> addCategory(@RequestBody Category category) {
-		if(categoryService.upsert(category) != null) {
-			return new ResponseEntity<Category>(HttpStatus.CREATED);
-		}
-		return new ResponseEntity<Category>(HttpStatus.NOT_FOUND);
+	public Category addCategory(@RequestBody Category category) {
+		return categoryService.upsert(category);
 	}
 
 	@DeleteMapping("/category/{id}")
