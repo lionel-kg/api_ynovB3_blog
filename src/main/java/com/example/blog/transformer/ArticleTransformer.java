@@ -14,15 +14,6 @@ public class ArticleTransformer {
 		articleFull.setDate_pub(article.getDate_pub());
 		articleFull.setCommentary(article.getCommentary());
 		
-		/*for(Article article : category.getProducts()) {
-			ProductLight productLight = new ProductLight();
-			productLight.setId(product.getId());
-			productLight.setName(product.getName());
-			productLight.setDescription(product.getDescription());
-			productLight.setCost(product.getCost());
-			
-			categoryFull.getProducts().add(productLight);
-		}		*/
 		return articleFull;
 	}
 	

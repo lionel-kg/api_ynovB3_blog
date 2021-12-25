@@ -21,8 +21,7 @@ public class CategoryTransformer {
 			articleLight.setArticle_id(article.getArticle_id());
 			articleLight.setContent(article.getContent());
 			articleLight.setDate_pub(article.getDate_pub());
-//			articleLight.setDescription(article.getDescription());
-//			articleLight.setCost(article.getCost());
+
 			
 			categoryFull.getArticles().add(articleLight);
 		}		
