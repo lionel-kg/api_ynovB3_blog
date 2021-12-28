@@ -27,7 +27,7 @@ public class Article {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "article_id")
-	private int article_id;
+	private Integer article_id;
 	private String content;
 	private Date date_pub;
 	
@@ -51,7 +51,7 @@ public class Article {
 		return article_id;
 	}
 	
-	public void setArticle_id(int article_id) 
+	public void setArticle_id(Integer article_id) 
 	{
 		this.article_id = article_id;
 	}
