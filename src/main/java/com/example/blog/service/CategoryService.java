@@ -18,6 +18,8 @@ public class CategoryService {
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
+	@Autowired CategoryTransformer categoryTransformer;
+	
 	public Category upsert(Category category) 
 	{
 		return categoryRepository.save(category);
@@ -30,8 +32,7 @@ public class CategoryService {
 	
 	public List<CategoryFull> getCategories() {
 		Iterable<Category> categories = categoryRepository.findAll();
-		CategoryTransformer transformer = new CategoryTransformer();
-		return transformer.transform(categories);
+		return categoryTransformer.transform(categories);
 	}
 
 	public void deleteCategory(Integer id)

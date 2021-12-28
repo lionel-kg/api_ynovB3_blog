@@ -4,6 +4,7 @@ public class CategoryLight {
 	private Integer categoryId;
 	private String name;
 	
+	
 	public Integer getCategoryId() {
 		return categoryId;
 	}

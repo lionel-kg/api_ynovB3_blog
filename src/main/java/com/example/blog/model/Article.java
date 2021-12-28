@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -36,21 +37,9 @@ public class Article {
 	 private Author author;*/
 	
 
-	@JsonIgnore
 	 @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER , orphanRemoval = true)
 	 @JoinColumn(name="article_id")
 	 private List<Commentary> commentary;   
-	
-	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = {
-			CascadeType.PERSIST,
-			CascadeType.MERGE
-	})
-	@JoinTable(
-			name = "category_article",
-			joinColumns = @JoinColumn(name = "article_id"),
-			inverseJoinColumns = @JoinColumn(name="category_id"))
-	private List<Category> categories = new ArrayList<>();
 	 
 	 public List<Commentary> getCommentary() 
 	 {

@@ -7,6 +7,9 @@ import com.example.blog.model.Commentary;
 
 public class ArticleFull extends ArticleLight{
 	private String content;
+	private Date date_pub;
+	private List<Commentary> commentary;
+	
 	public String getContent() {
 		return content;
 	}
@@ -25,8 +28,7 @@ public class ArticleFull extends ArticleLight{
 	public void setCommentary(List<Commentary> commentary) {
 		this.commentary = commentary;
 	}
-	private Date date_pub;
-	private List<Commentary> commentary;
+	
 	
 	
 }

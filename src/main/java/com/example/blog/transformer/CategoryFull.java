@@ -8,7 +8,7 @@ import com.example.ynov.productapi.transformer.ProductLight;
 public class CategoryFull extends CategoryLight{
 	private Integer categoryId;
 	private String name;
-	private List<ArticleLight> articles = new ArrayList<>();
+	private List<ArticleFull> articles = new ArrayList<>();
 	
 	public Integer getCategoryId() {
 		return categoryId;
@@ -22,10 +22,10 @@ public class CategoryFull extends CategoryLight{
 	public void setName(String name) {
 		this.name = name;
 	}
-	public List<ArticleLight> getArticles() {
+	public List<ArticleFull> getArticles() {
 		return articles;
 	}
-	public void setArticles(List<ArticleLight> articles) {
+	public void setArticles(List<ArticleFull> articles) {
 		this.articles = articles;
 	}
 	

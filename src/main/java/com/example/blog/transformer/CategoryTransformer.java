@@ -17,13 +17,13 @@ public class CategoryTransformer {
 		categoryFull.setName(category.getName());
 		
 		for(Article article : category.getArticles()) {
-			ArticleLight articleLight = new ArticleLight();
-			articleLight.setArticle_id(article.getArticle_id());
-			articleLight.setContent(article.getContent());
-			articleLight.setDate_pub(article.getDate_pub());
-
+			ArticleFull articleFull = new ArticleFull();
+			articleFull.setArticle_id(article.getArticle_id());
+			articleFull.setContent(article.getContent());
+			articleFull.setDate_pub(article.getDate_pub());
+			articleFull.setCommentary(article.getCommentary());
 			
-			categoryFull.getArticles().add(articleLight);
+			categoryFull.getArticles().add(articleFull);
 		}		
 		return categoryFull;
 	}

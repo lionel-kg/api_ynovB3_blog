@@ -17,6 +17,9 @@ public class ArticleService {
 	@Autowired
 	private ArticleRepository articleRepository;
 	
+	@Autowired
+	private ArticleTransformer articleTransformer;
+	
 	public Article upsert(Article article) 
 	{
 		return articleRepository.save(article);
@@ -24,8 +27,7 @@ public class ArticleService {
 	
 	public List<ArticleFull> getCommentary() {
 		Iterable<Article> articles = articleRepository.findAll();
-		ArticleTransformer transformer = new ArticleTransformer();
-		return transformer.transform(articles);
+		return articleTransformer.transform(articles);
 	}
 	public Optional<Article> getArticle(Integer id)
 	{

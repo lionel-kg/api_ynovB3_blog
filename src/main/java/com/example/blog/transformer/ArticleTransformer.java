@@ -3,9 +3,12 @@ package com.example.blog.transformer;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import com.example.blog.model.Article;
 import com.example.blog.model.Category;
 
+@Component
 public class ArticleTransformer {
 	public ArticleFull transform(Article article) {
 		ArticleFull articleFull = new ArticleFull();
