@@ -13,6 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -23,21 +25,14 @@ public class Category {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name= "categoryId")
+	@Column(name= "category_Id")
 	private Integer categoryId;
 	
-	/*
-	@JsonIgnore
-	@ManyToMany(fetch = FetchType.LAZY, cascade = {
-			CascadeType.PERSIST,
-			CascadeType.MERGE
-	})
+	private String name;
 	
-	@JoinTable(
-			name = "category_product",
-			joinColumns = @JoinColumn(name = "category_Id"),
-			inverseJoinColumns = @JoinColumn(name="product_id"))
-		private List<Article> articles = new ArrayList<>();
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name ="article_Id")
+	private List<Article> articles = new ArrayList<>();
 	
 	public List<Article> getArticles() {
 		return articles;
@@ -45,19 +40,27 @@ public class Category {
 	public void setArticles(List<Article> articles) {
 		this.articles = articles;
 	}
-	*/
-	public Integer getCategoryId() {
+	
+	public Integer getCategoryId() 
+	{
 		return categoryId;
 	}
-	public void setCategoryId(Integer categoryId) {
+	
+	public void setCategoryId(Integer categoryId) 
+	{
 		this.categoryId = categoryId;
 	}
-	public String getName() {
+	
+	public String getName() 
+	{
 		return name;
 	}
-	public void setName(String name) {
+	
+	public void setName(String name) 
+	{
 		this.name = name;
 	}
-	private String name;
+	
+
 	
 }
