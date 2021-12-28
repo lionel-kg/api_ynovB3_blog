@@ -46,7 +46,7 @@ public class Article {
 	       return commentary;
 	 }
 	
-	public int getArticle_id() 
+	public Integer getArticle_id() 
 	{
 		return article_id;
 	}

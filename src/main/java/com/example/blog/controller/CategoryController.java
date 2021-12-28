@@ -42,17 +42,17 @@ public class CategoryController {
 		return new ResponseEntity<Category>(HttpStatus.NOT_FOUND);
 	}
 
-	@PostMapping("/category/add")
+	@PostMapping("/auth/category/add")
 	public Category addCategory(@RequestBody Category category) {
 		return categoryService.upsert(category);
 	}
 	
-	@PutMapping("/category")
+	@PutMapping("/auth/category")
 	public Category editCategory(@RequestBody Category category) {
 		return categoryService.upsert(category);
 	}
 	
-	@DeleteMapping("/category/{id}")
+	@DeleteMapping("/auth/category/{id}")
 	public void deleteCategory(@PathVariable("id") Integer id) {
 		categoryService.deleteCategory(id);
 	}

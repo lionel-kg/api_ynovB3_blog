@@ -40,12 +40,12 @@ public class ArticleController {
 		return new ResponseEntity<Article>(HttpStatus.NOT_FOUND);
 	}
 	
-	@PostMapping("/article/add")
+	@PostMapping("/auth/article/add")
 	public Article addArticle(@RequestBody Article article){
 		return articleService.upsert(article);		
 	}
 	
-	@DeleteMapping("/article/{id}")
+	@DeleteMapping("/auth/article/{id}")
 	public void deleteArticle(@PathVariable("id") Integer id) {
 		articleService.deleteArticle(id);
 	}

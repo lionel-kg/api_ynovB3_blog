@@ -3,6 +3,7 @@ package com.example.blog.configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -36,13 +37,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	    		.and();
 		
 		http.authorizeRequests()
-			.antMatchers("/api/public/**").permitAll()
-			.antMatchers("/api/private/**").hasRole("USER")
-			//.anyRequest().authenticated().and().httpBasic(); // A décommenter pour l'utilisation de la Basic Auth
+			.antMatchers("/blog-api/auth/**").hasRole("USER")
+			.antMatchers("/blog-api/**").permitAll()
 			.anyRequest().authenticated();
 		
 		http.addFilterBefore(jwtTokenFilter, 
-				UsernamePasswordAuthenticationFilter.class); // Utilisation de la Bearer Token Auth
+				UsernamePasswordAuthenticationFilter.class); 
 	}
 
 	@Bean
@@ -58,12 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		// InMemory users
-//		String encodedPassword = passwordEncoder().encode("password");
-//		auth.inMemoryAuthentication().passwordEncoder(passwordEncoder())
-//			.withUser("jordan").password(encodedPassword).roles("USER"); 
 		
-		// Database users
 		auth.userDetailsService(userDetailsService)
 			.passwordEncoder(passwordEncoder());
 	}

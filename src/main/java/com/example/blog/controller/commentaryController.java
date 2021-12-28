@@ -16,7 +16,7 @@ public class commentaryController {
 	@Autowired
 	CommentaryService commentaryService;
 	
-	@DeleteMapping("/commentary/{id}")
+	@DeleteMapping("/auth/commentary/{id}")
 	public void deleteCommentary(@PathVariable("id") Integer id) {
 		commentaryService.deleteCommentary(id);
 	}
