@@ -1,5 +1,13 @@
 package com.example.blog.model;
 
-public class Article {
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name= "articles")
+public class Article {
+	
+	@Id
+	private Integer article_id;
 }
