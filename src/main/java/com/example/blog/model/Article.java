@@ -16,9 +16,12 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.example.blog.transformer.CommentaryFull;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="articles")
@@ -31,20 +34,34 @@ public class Article {
 	private String content;
 	private Date date_pub;
 	
-	/*@OneToOne(fetch = FetchType.LAZY,
-            cascade =  CascadeType.ALL,
-            mappedBy = "author")
-	 private Author author;*/
+	@ManyToOne(fetch = FetchType.LAZY,
+	        cascade =  CascadeType.ALL
+	)
+	@JoinColumn(name="author_id")
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	private Author author;
 	
 
-	 @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER , orphanRemoval = true)
-	 @JoinColumn(name="article_id")
-	 private List<Commentary> commentary;   
+	public void setCommentary(List<Commentary> commentary) {
+		this.commentary = commentary;
+	}
+
+	public Author getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(Author author) {
+		this.author = author;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER , orphanRemoval = true)
+	@JoinColumn(name="article_id")
+	private List<Commentary> commentary = new ArrayList<>();   
 	 
-	 public List<Commentary> getCommentary() 
-	 {
-	       return commentary;
-	 }
+	public List<Commentary> getCommentary() 
+	{
+	      return commentary;
+	}
 	
 	public Integer getArticle_id() 
 	{

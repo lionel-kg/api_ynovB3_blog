@@ -25,7 +25,7 @@ public class ArticleService {
 		return articleRepository.save(article);
 	}
 	
-	public List<ArticleFull> getCommentary() {
+	public List<ArticleFull> getArticles() {
 		Iterable<Article> articles = articleRepository.findAll();
 		return articleTransformer.transform(articles);
 	}
@@ -34,10 +34,10 @@ public class ArticleService {
 		return articleRepository.findById(id);
 	}
 	
-	public Iterable<Article> getArticles()
-	{
-		return articleRepository.findAll();
-	}
+//	public Iterable<Article> getArticles()
+//	{
+//		return articleRepository.findAll();
+//	}
 	public void deleteArticle(Integer id)
 	{
 		articleRepository.deleteById(id);

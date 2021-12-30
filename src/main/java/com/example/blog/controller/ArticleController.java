@@ -27,26 +27,31 @@ public class ArticleController {
 	private ArticleService articleService;
 	
 	@GetMapping("/articles")
-	public List<ArticleFull> getCommentary() {
-		return articleService.getCommentary();
+	public List<ArticleFull> getArticles() 
+	{
+		return articleService.getArticles();
 	}
 	
 	@GetMapping("/article/{id}")
-	public ResponseEntity<Article> getArticle(@PathVariable("id") Integer id) {
+	public ResponseEntity<Article> getArticle(@PathVariable("id") Integer id) 
+	{
 		Optional<Article> c = articleService.getArticle(id);
-		if (c.isPresent()) {
+		if (c.isPresent()) 
+		{
 			return new ResponseEntity<Article>(c.get(), HttpStatus.OK);
 		}
 		return new ResponseEntity<Article>(HttpStatus.NOT_FOUND);
 	}
 	
 	@PostMapping("/auth/article/add")
-	public Article addArticle(@RequestBody Article article){
+	public Article addArticle(@RequestBody Article article)
+	{
 		return articleService.upsert(article);		
 	}
 	
 	@DeleteMapping("/auth/article/{id}")
-	public void deleteArticle(@PathVariable("id") Integer id) {
+	public void deleteArticle(@PathVariable("id") Integer id) 
+	{
 		articleService.deleteArticle(id);
 	}
 	
