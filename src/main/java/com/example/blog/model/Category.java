@@ -25,13 +25,13 @@ public class Category {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name= "category_Id")
+	@Column(name= "category_id")
 	private Integer categoryId;
 	
 	private String name;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
-	@JoinColumn(name ="article_Id")
+	@JoinColumn(name ="article_id")
 	private List<Article> articles = new ArrayList<>();
 	
 	public List<Article> getArticles() {

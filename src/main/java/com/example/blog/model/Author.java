@@ -19,9 +19,7 @@ public class Author {
 	@JsonIgnore
 	private Integer author_id;
 
-	private String username;
-
-	@JsonIgnore
+	private String username;	
 	private String password;
 
 	public Integer getAuthorId() {

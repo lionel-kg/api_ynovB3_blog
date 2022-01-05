@@ -32,6 +32,9 @@ public class Commentary {
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private Author author;
 	
+	@Column(name="article_id")
+	private Integer article_Id;
+	
 	public Author getAuthor() {
 		return author;
 	}
@@ -40,7 +43,7 @@ public class Commentary {
 		this.author = author;
 	}
 
-	private Date date_pub;
+	private Date date_pub = new Date();
 	private String content;
 	
 	public int getComment_id() 
@@ -71,6 +74,14 @@ public class Commentary {
 	public void setContent(String content) 
 	{
 		this.content = content;
+	}
+
+	public Integer getArticle_Id() {
+		return article_Id;
+	}
+
+	public void setArticle_Id(Integer article_Id) {
+		this.article_Id = article_Id;
 	}
 	
 }
