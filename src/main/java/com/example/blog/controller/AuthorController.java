@@ -10,6 +10,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.blog.configuration.JwtTokenUtil;
 import com.example.blog.model.Author;
+import com.example.blog.service.AuthorService;
 
 
 @RestController
@@ -28,10 +30,13 @@ public class AuthorController {
 	@Autowired
 	private JwtTokenUtil jwtTokenUtil;
 	
+	@Autowired
+	private AuthorService authorService;
+
 	@PostMapping("/login")
 	public ResponseEntity<String> login(
 			@RequestBody Author author) {
-		
+
 		try  {
 			Authentication authenticate = 
 					authenticationManager.authenticate(
@@ -44,7 +49,7 @@ public class AuthorController {
 			String token = 
 					jwtTokenUtil.generateAccessToken(authenticatedUser);
 			System.out.println("Token is : " + token);
-			
+
 			String text = authenticatedUser.getUsername() 
 					+ " successfully autenticated";
 			ResponseEntity<String> response = 
@@ -58,6 +63,11 @@ public class AuthorController {
 		}
 	}	
 	
+	@GetMapping("/author/{username}")
+	public Author getAuthorByUsername(@PathVariable("username") String username) {
+		return authorService.getUserByUsername(username);
+	}
+
 	@GetMapping("/securitynone")
 	public String securityNone() {
 		return "open";

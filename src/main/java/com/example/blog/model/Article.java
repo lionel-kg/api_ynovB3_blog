@@ -20,6 +20,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.example.blog.transformer.CommentaryFull;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -32,15 +33,17 @@ public class Article {
 	@Column(name = "article_id")
 	private Integer article_id;
 	private String content;
-	private Date date_pub;
+	private Date date_pub = new Date();
 	
 	@ManyToOne(fetch = FetchType.LAZY,
-	        cascade =  CascadeType.ALL
+	        cascade =  CascadeType.MERGE
 	)
-	@JoinColumn(name="author_id")
+	@JoinColumn(name="authorId")
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	private Author author;
 	
+	@Column(name="category_id")
+	private Integer category_id;
 
 	public void setCommentary(List<Commentary> commentary) {
 		this.commentary = commentary;
@@ -91,5 +94,13 @@ public class Article {
 	public void setDate_pub(Date date_pub) 
 	{
 		this.date_pub = date_pub;
+	}
+
+	public Integer getCategory_id() {
+		return category_id;
+	}
+
+	public void setCategory_Id(Integer category_id) {
+		this.category_id = category_id;
 	}
 }

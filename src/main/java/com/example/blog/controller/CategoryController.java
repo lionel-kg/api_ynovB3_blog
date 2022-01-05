@@ -52,7 +52,7 @@ public class CategoryController {
 		return categoryService.upsert(category);
 	}
 	
-	@DeleteMapping("/auth/category/{id}")
+	@DeleteMapping("/category/{id}")
 	public void deleteCategory(@PathVariable("id") Integer id) {
 		categoryService.deleteCategory(id);
 	}

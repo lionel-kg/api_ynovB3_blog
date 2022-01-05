@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.blog.model.Article;
 import com.example.blog.service.ArticleService;
 import com.example.blog.transformer.ArticleFull;
-import com.example.blog.transformer.CategoryFull;
 
 @RestController
 @RequestMapping("/blog-api")
@@ -25,6 +24,7 @@ public class ArticleController {
 	
 	@Autowired
 	private ArticleService articleService;
+	
 	
 	@GetMapping("/articles")
 	public List<ArticleFull> getArticles() 
@@ -43,13 +43,13 @@ public class ArticleController {
 		return new ResponseEntity<Article>(HttpStatus.NOT_FOUND);
 	}
 	
-	@PostMapping("/auth/article/add")
+	@PostMapping("auth/article/add")
 	public Article addArticle(@RequestBody Article article)
 	{
 		return articleService.upsert(article);		
 	}
 	
-	@DeleteMapping("/auth/article/{id}")
+	@DeleteMapping("/article/{id}")
 	public void deleteArticle(@PathVariable("id") Integer id) 
 	{
 		articleService.deleteArticle(id);
