@@ -30,7 +30,7 @@ public class Category {
 	
 	private String name;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	@JoinColumn(name ="article_Id")
 	private List<Article> articles = new ArrayList<>();
 	

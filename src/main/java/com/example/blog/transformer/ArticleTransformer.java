@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.example.blog.model.Article;
-import com.example.blog.model.Category;
+import com.example.blog.model.Commentary;
 
 @Component
 public class ArticleTransformer {
@@ -15,7 +15,17 @@ public class ArticleTransformer {
 		articleFull.setArticle_id(article.getArticle_id());
 		articleFull.setContent(article.getContent());
 		articleFull.setDate_pub(article.getDate_pub());
-		articleFull.setCommentary(article.getCommentary());
+		articleFull.setAuthor(article.getAuthor());
+		
+		for(Commentary commentary: article.getCommentary()) {
+			CommentaryFull commentaryFull = new CommentaryFull();
+			commentaryFull.setCommentary_id(commentary.getComment_id());
+			commentaryFull.setContent(commentary.getContent());
+			commentaryFull.setDate_pub(commentary.getDate_pub());
+			commentaryFull.setAuthor(commentary.getAuthor());
+			
+			articleFull.getCommentary().add(commentaryFull);
+		}
 		
 		return articleFull;
 	}

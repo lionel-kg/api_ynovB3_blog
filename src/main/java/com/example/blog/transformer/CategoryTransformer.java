@@ -21,8 +21,8 @@ public class CategoryTransformer {
 			articleFull.setArticle_id(article.getArticle_id());
 			articleFull.setContent(article.getContent());
 			articleFull.setDate_pub(article.getDate_pub());
-			articleFull.setCommentary(article.getCommentary());
-			
+			articleFull.setAuthor(article.getAuthor());
+		
 			categoryFull.getArticles().add(articleFull);
 		}		
 		return categoryFull;

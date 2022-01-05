@@ -8,7 +8,7 @@ public class CategoryLight {
 	public Integer getCategoryId() {
 		return categoryId;
 	}
-	public void setCategory_id(Integer categoryId) {
+	public void setCategoryId(Integer categoryId) {
 		this.categoryId = categoryId;
 	}
 	public String getName() {
